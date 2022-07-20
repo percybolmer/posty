@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mysql:
+        image: mysql:5.7.38
+        restart: always
+        environment:
+          - MYSQL_ROOT_PASSWORD=posty
+          - MYSQL_PASSWORD=posty
+          - MYSQL_USER=posty
+          - MYSQL_DATABASE=posty
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        networks:
+          - posty-net
+        ports:
+          - '3306:3306'
+
+networks:
+  posty-net:
+    name: posty
